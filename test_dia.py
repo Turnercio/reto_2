@@ -52,3 +52,9 @@ def test_anyos_bisiesto():
     assert dia.es_bisiesto() == True
     
     dia = Dia(1900, 1, 1)
+
+
+def test_create_dia_con_tipos_incorrectos():
+    with pytest.raises(ValueError) as excp:
+        d = Dia("a", "b", "c")
+        assert "Día" in str(excp.value)

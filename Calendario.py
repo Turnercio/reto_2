@@ -2,14 +2,25 @@
 
 class Dia:
     def __init__(self, anyo=1970, mes=1, dia=1):
-        self.anyo = anyo       
-        self.mes = mes  
-        self.dia = dia    
+        
+        if self.es_entero(anyo):
+            self.anyo = anyo       
+        else:
+            raise ValueError("Año debe de ser un número entero")
+        if self.es_entero(mes):
+            self.mes = mes  
+        else:
+            raise ValueError("Mes debe de ser un número entero")
+        if self.es_entero(dia):
+            self.dia = dia    
+        else:
+            raise ValueError("Dia debe de ser un número entero")
+        
+
         self.comprobar_fecha() 
-
-
-
-
+    
+    def es_entero(self, valor):      
+        return isinstance(valor, int)
 
     def es_bisiesto(self):
         return self.anyo % 4 == 0 and (self.anyo %100 != 0 or self.anyo % 400 == 0)
